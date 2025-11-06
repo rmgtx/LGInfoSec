@@ -1,0 +1,59 @@
+[
+  {
+    "id": 1,
+    "title": "Information Security Policy",
+    "category": "Information Security Policies",
+    "fileUrl": "#",
+    "updatedAt": "2025-10-01"
+  },
+  {
+    "id": 2,
+    "title": "Data Classification Standard",
+    "category": "Information Security Standards",
+    "fileUrl": "#",
+    "updatedAt": "2025-09-15"
+  },
+  {
+    "id": 3,
+    "title": "Incident Response Procedure",
+    "category": "Information Security Policies",
+    "fileUrl": "#",
+    "updatedAt": "2025-10-10"
+  },
+  {
+    "id": 4,
+    "title": "SOC 3 Report",
+    "category": "External Documentation",
+    "fileUrl": "#",
+    "updatedAt": "2025-08-01"
+  },
+  {
+    "id": 5,
+    "title": "HITRUST Certification",
+    "category": "External Documentation",
+    "fileUrl": "#",
+    "updatedAt": "2025-07-15"
+  },
+  {
+    "id": 6,
+    "title": "Access Control Standard",
+    "category": "Information Security Standards",
+    "fileUrl": "#",
+    "updatedAt": "2025-09-20"
+  },
+  {
+    "id": 7,
+    "title": "Password Policy",
+    "category": "Information Security Policies",
+    "fileUrl": "#",
+    "updatedAt": "2025-10-05"
+  },
+  {
+    "id": 8,
+    "title": "Vendor Risk Management Policy",
+    "category": "Information Security Policies",
+    "fileUrl": "#",
+    "updatedAt": "2025-09-25"
+  }
+]
+

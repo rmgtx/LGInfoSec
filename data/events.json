@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Incident Response Training",
+    "startDate": "2025-11-10",
+    "endDate": "2025-11-14",
+    "category": "Training"
+  },
+  {
+    "id": 2,
+    "title": "Security Awareness Workshop",
+    "startDate": "2025-11-20",
+    "endDate": "2025-11-20",
+    "category": "Workshop"
+  },
+  {
+    "id": 3,
+    "title": "Phishing Simulation Exercise",
+    "startDate": "2025-11-25",
+    "endDate": "2025-11-25",
+    "category": "Training"
+  },
+  {
+    "id": 4,
+    "title": "Data Privacy Webinar",
+    "startDate": "2025-12-05",
+    "endDate": "2025-12-05",
+    "category": "Webinar"
+  },
+  {
+    "id": 5,
+    "title": "Security Policy Review Session",
+    "startDate": "2025-12-15",
+    "endDate": "2025-12-15",
+    "category": "Workshop"
+  }
+]
+

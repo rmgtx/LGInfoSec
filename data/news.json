@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "title": "AI-Driven Extortion Attacks Rising",
+    "source": "KnowBe4",
+    "published": "2025-11-05",
+    "summary": "One in three mobile users targeted by sophisticated AI-driven extortion attacks. Learn how to protect yourself and your organization.",
+    "url": "#"
+  },
+  {
+    "id": 2,
+    "title": "New Phishing Campaign Targets Healthcare Sector",
+    "source": "KnowBe4",
+    "published": "2025-11-01",
+    "summary": "Security researchers have identified a new phishing campaign specifically targeting healthcare organizations. Be vigilant with suspicious emails.",
+    "url": "#"
+  },
+  {
+    "id": 3,
+    "title": "Multi-Factor Authentication Best Practices",
+    "source": "InfoSec Team",
+    "published": "2025-10-28",
+    "summary": "Review the latest MFA best practices to ensure your accounts remain secure. Remember to use authenticator apps over SMS when possible.",
+    "url": "#"
+  },
+  {
+    "id": 4,
+    "title": "Ransomware Prevention Checklist",
+    "source": "KnowBe4",
+    "published": "2025-10-20",
+    "summary": "A comprehensive checklist to help prevent ransomware attacks. Regular backups and employee training are key components.",
+    "url": "#"
+  },
+  {
+    "id": 5,
+    "title": "Zero-Day Vulnerability in Popular Software",
+    "source": "Security Advisory",
+    "published": "2025-10-15",
+    "summary": "A critical zero-day vulnerability has been discovered. Ensure all software is updated to the latest version immediately.",
+    "url": "#"
+  }
+]
+
