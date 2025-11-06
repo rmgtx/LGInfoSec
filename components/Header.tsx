@@ -3,7 +3,7 @@
 export default function Header() {
   return (
     <>
-      <a 
+      <a
         href="#main-content"
         className="skip-link"
         style={{
@@ -27,57 +27,70 @@ export default function Header() {
         Skip to main content
       </a>
       <header className="navbar" role="banner">
-        <div style={{ 
-          maxWidth: "1400px", 
-          margin: "0 auto", 
-          padding: "var(--spacing-lg) var(--spacing-xl)",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          width: "100%"
-        }}>
-          <div style={{ 
-            display: "flex", 
-            alignItems: "center", 
-            gap: "var(--spacing-md)"
-          }}>
-            <div 
-              style={{ 
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "var(--spacing-lg) var(--spacing-xl)",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "var(--spacing-md)",
+            }}
+          >
+            <div
+              style={{
                 width: "48px",
                 height: "48px",
                 borderRadius: "var(--radius-md)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: "var(--color-primary)"
+                backgroundColor: "var(--color-primary)",
               }}
               aria-hidden="true"
             >
-              <span style={{ 
-                color: "white", 
-                fontWeight: "var(--font-weight-bold)", 
-                fontSize: "var(--font-size-xl)"
-              }}>
+              <span
+                style={{
+                  color: "white",
+                  fontWeight: "var(--font-weight-bold)",
+                  fontSize: "var(--font-size-xl)",
+                }}
+              >
                 M
               </span>
             </div>
             <div>
-              <h1 className="navbar-logo" style={{ 
-                margin: 0,
-                fontSize: "var(--font-size-xl)",
-                fontWeight: "var(--font-weight-bold)",
-                lineHeight: "var(--line-height-tight)"
-              }}>Mend</h1>
-              <p className="text-muted" style={{ margin: 0 }}>InfoSec Portal</p>
+              <h1
+                className="navbar-logo"
+                style={{
+                  margin: 0,
+                  fontSize: "var(--font-size-xl)",
+                  fontWeight: "var(--font-weight-bold)",
+                  lineHeight: "var(--line-height-tight)",
+                }}
+              >
+                Mend
+              </h1>
+              <p className="text-muted" style={{ margin: 0 }}>
+                InfoSec Portal
+              </p>
             </div>
           </div>
-          <nav 
-            className="navbar-links" 
-            aria-label="Main navigation" 
-            style={{ 
+          <nav
+            className="navbar-links"
+            aria-label="Main navigation"
+            style={{
               display: "flex",
               alignItems: "center",
-              gap: "var(--spacing-lg)"
+              gap: "var(--spacing-lg)",
             }}
           >
             <a href="#main-content">Home</a>
@@ -90,4 +103,3 @@ export default function Header() {
     </>
   );
 }
-

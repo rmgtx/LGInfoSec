@@ -8,15 +8,20 @@ export default function IncidentReportButton() {
 
   return (
     <>
-      <section 
+      <section
         className="card"
-        style={{ 
+        style={{
           textAlign: "center",
-          background: "linear-gradient(to bottom, rgba(0, 200, 150, 0.05), var(--color-bg-alt))"
+          background:
+            "linear-gradient(to bottom, rgba(0, 200, 150, 0.05), var(--color-bg-alt))",
         }}
         aria-labelledby="incident-heading"
       >
-        <h2 id="incident-heading" className="card-title" style={{ marginBottom: "var(--spacing-lg)" }}>
+        <h2
+          id="incident-heading"
+          className="card-title"
+          style={{ marginBottom: "var(--spacing-lg)" }}
+        >
           Report Security Incident
         </h2>
         <button
@@ -33,15 +38,19 @@ export default function IncidentReportButton() {
             fontWeight: "var(--font-weight-bold)",
           }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: "28px" }} aria-hidden="true">
+          <span
+            className="material-symbols-outlined"
+            style={{ fontSize: "28px" }}
+            aria-hidden="true"
+          >
             emergency
           </span>
           Report Security Incident
         </button>
-        <p 
+        <p
           id="incident-helper"
           className="text-muted"
-          style={{ 
+          style={{
             marginTop: "var(--spacing-lg)",
             lineHeight: "var(--line-height-relaxed)",
             maxWidth: "600px",
@@ -49,12 +58,22 @@ export default function IncidentReportButton() {
             marginRight: "auto",
           }}
         >
-          <strong style={{ color: "var(--color-text)", fontWeight: "var(--font-weight-semibold)" }}>Urgent?</strong> Use this form for active security incidents, data breaches, or suspicious activity. 
-          Notifies on-call InfoSec team within 15 minutes.
+          <strong
+            style={{
+              color: "var(--color-text)",
+              fontWeight: "var(--font-weight-semibold)",
+            }}
+          >
+            Urgent?
+          </strong>{" "}
+          Use this form for active security incidents, data breaches, or
+          suspicious activity. Notifies on-call InfoSec team within 15 minutes.
         </p>
       </section>
-      <IncidentReportModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <IncidentReportModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </>
   );
 }
-

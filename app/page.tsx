@@ -12,17 +12,23 @@ export default function Home() {
     <>
       <Header />
       <HeroBanner />
-      <main id="main-content" style={{ minHeight: "100vh", backgroundColor: "var(--color-bg)" }} role="main">
-        <div style={{ 
-          maxWidth: "1400px", 
-          margin: "0 auto", 
-          padding: "var(--spacing-xl)",
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--section-gap)",
-          width: "100%",
-          boxSizing: "border-box"
-        }}>
+      <main
+        id="main-content"
+        style={{ minHeight: "100vh", backgroundColor: "var(--color-bg)" }}
+        role="main"
+      >
+        <div
+          style={{
+            maxWidth: "1400px",
+            margin: "0 auto",
+            padding: "var(--spacing-xl)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--section-gap)",
+            width: "100%",
+            boxSizing: "border-box",
+          }}
+        >
           <MissionCard />
           <IncidentReportButton />
           <NavigationColumns />
@@ -34,4 +40,3 @@ export default function Home() {
     </>
   );
 }
-

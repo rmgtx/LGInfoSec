@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Mend InfoSec Portal",
-  description: "Information Security Portal - Preserving Confidentiality, Integrity, and Availability",
+  description:
+    "Information Security Portal - Preserving Confidentiality, Integrity, and Availability",
 };
 
 export default function RootLayout({
@@ -32,4 +33,3 @@ export default function RootLayout({
     </html>
   );
 }
-

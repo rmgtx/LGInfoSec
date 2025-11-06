@@ -3,12 +3,15 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
+    removeConsole: process.env.NODE_ENV === "production",
   },
   experimental: {
-    optimizePackageImports: ['@fullcalendar/react', '@fullcalendar/daygrid', '@fullcalendar/interaction'],
+    optimizePackageImports: [
+      "@fullcalendar/react",
+      "@fullcalendar/daygrid",
+      "@fullcalendar/interaction",
+    ],
   },
-}
+};
 
-module.exports = nextConfig
-
+module.exports = nextConfig;

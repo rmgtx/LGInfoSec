@@ -28,11 +28,13 @@ An internal Information Security Portal built with Next.js and React, designed t
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 npm install
 ```
 
 2. Run the development server:
+
 ```bash
 npm run dev
 ```
@@ -73,28 +75,34 @@ LGInfoSec/
 ## Features in Detail
 
 ### Security Incident Reporting
+
 - Modal-based form with validation
 - Fields: Name, Email, Department, Incident Type, Description, Attachment
 - Submits to `/api/report` endpoint
 - Stores reports in `data/reports.json` (prototype)
 
 ### Navigation Sections
+
 Three main categories:
+
 1. **InfoSec Processes**: App approval, vendor risk, SFTP access, breach response
 2. **Employee Management**: Onboarding/offboarding, system access, job title changes
 3. **IT Requests**: Computer unlock, password reset, VPN setup, hardware requests
 
 ### Policy Library
+
 - Filterable by category (Policies, Standards, External Documentation)
 - Displays document title, category, and last updated date
 - Mock data structure ready for SharePoint integration
 
 ### Event Calendar
+
 - FullCalendar integration with month view
 - Click events to view details
 - Color-coded by event category
 
 ### Security Awareness Feed
+
 - Displays latest security news articles
 - Shows source, publication date, and summary
 - Ready for RSS/API integration

@@ -5,12 +5,12 @@ import { join } from "path";
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    
+
     // In a real application, you would save this to a database
     // For the prototype, we'll save to a JSON file
     const dataDir = join(process.cwd(), "data");
     const reportsFile = join(dataDir, "reports.json");
-    
+
     // Read existing reports if file exists
     let reports: any[] = [];
     try {
@@ -20,7 +20,7 @@ export async function POST(request: NextRequest) {
     } catch (error) {
       // File doesn't exist yet, start with empty array
     }
-    
+
     // Add new report
     const newReport = {
       id: reports.length + 1,
@@ -28,19 +28,23 @@ export async function POST(request: NextRequest) {
       submittedAt: new Date().toISOString(),
     };
     reports.push(newReport);
-    
+
     // Ensure data directory exists
     try {
       await mkdir(dataDir, { recursive: true });
     } catch (error) {
       // Directory might already exist
     }
-    
+
     // Write to file
     await writeFile(reportsFile, JSON.stringify(reports, null, 2));
-    
+
     return NextResponse.json(
-      { success: true, message: "Report submitted successfully", id: newReport.id },
+      {
+        success: true,
+        message: "Report submitted successfully",
+        id: newReport.id,
+      },
       { status: 200 }
     );
   } catch (error) {
@@ -51,4 +55,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
