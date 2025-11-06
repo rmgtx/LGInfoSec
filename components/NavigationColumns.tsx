@@ -26,38 +26,99 @@ const itRequests: NavItem[] = [
   { title: "New Hardware Request", slug: "hardware-request", description: "Request new hardware or equipment" },
 ];
 
-function LinkList({ title, items }: { title: string; items: NavItem[] }) {
+function LinkList({ title, items, headingId }: { title: string; items: NavItem[]; headingId: string }) {
   return (
-    <div className="card">
-      <h3 className="text-xl font-semibold text-mend-neutral-900 mb-4">{title}</h3>
-      <ul className="space-y-2">
+    <section className="card" aria-labelledby={headingId}>
+      <h3 id={headingId} style={{ marginBottom: "var(--spacing-md)" }}>{title}</h3>
+      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
         {items.map((item) => (
-          <li key={item.slug}>
+          <li key={item.slug} style={{ marginBottom: "var(--spacing-sm)" }}>
             <a
               href={`/request/${item.slug}`}
-              className="block p-3 rounded-md hover:bg-mend-primary-50 transition-colors group focus:outline-none focus:ring-2 focus:ring-mend-primary-500 focus:ring-offset-1"
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                padding: "var(--spacing-md)",
+                borderRadius: "var(--radius-sm)",
+                color: "var(--color-text)",
+                fontWeight: "var(--font-weight-medium)",
+                transition: "all var(--transition-fast)",
+                textDecoration: "none",
+                border: "1px solid transparent",
+                outline: "none",
+              }}
+              onFocus={(e) => {
+                e.currentTarget.style.outline = "2px solid var(--color-primary)";
+                e.currentTarget.style.outlineOffset = "2px";
+                e.currentTarget.style.borderColor = "var(--color-primary)";
+                e.currentTarget.style.backgroundColor = "rgba(10, 132, 255, 0.05)";
+              }}
+              onBlur={(e) => {
+                e.currentTarget.style.outline = "none";
+                e.currentTarget.style.borderColor = "transparent";
+                e.currentTarget.style.backgroundColor = "transparent";
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "rgba(10, 132, 255, 0.1)";
+                e.currentTarget.style.borderColor = "var(--color-border)";
+              }}
+              onMouseLeave={(e) => {
+                if (document.activeElement !== e.currentTarget) {
+                  e.currentTarget.style.backgroundColor = "transparent";
+                  e.currentTarget.style.borderColor = "transparent";
+                }
+              }}
             >
-              <span className="text-mend-primary-600 font-medium group-hover:text-mend-primary-700">
-                {item.title}
+              <span className="material-symbols-outlined" style={{ 
+                fontSize: "20px", 
+                color: "var(--color-primary)",
+                marginRight: "var(--spacing-sm)",
+                flexShrink: 0,
+                marginTop: "2px"
+              }}>
+                chevron_right
               </span>
-              {item.description && (
-                <p className="text-sm text-mend-neutral-600 mt-1">{item.description}</p>
-              )}
+              <div style={{ flex: 1 }}>
+                <div style={{ color: "var(--color-primary)", fontWeight: "var(--font-weight-medium)" }}>
+                  {item.title}
+                </div>
+                {item.description && (
+                  <div style={{ 
+                    fontSize: "var(--font-size-sm)", 
+                    color: "var(--color-text-secondary)",
+                    marginTop: "var(--spacing-xs)",
+                    lineHeight: "1.5"
+                  }}>
+                    {item.description}
+                  </div>
+                )}
+              </div>
             </a>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 
 export default function NavigationColumns() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      <LinkList title="InfoSec Processes" items={infosecProcesses} />
-      <LinkList title="Employee Management" items={employeeManagement} />
-      <LinkList title="IT Requests" items={itRequests} />
-    </div>
+    <section 
+      aria-labelledby="requests-heading"
+      style={{ marginBottom: "var(--spacing-xl)" }}
+    >
+      <h2 id="requests-heading" className="sr-only">Request Forms</h2>
+      <div 
+        className="grid grid-cols-1 md:grid-cols-3"
+        style={{ 
+          gap: "var(--spacing-lg)",
+        }}
+      >
+        <LinkList title="InfoSec Processes" items={infosecProcesses} headingId="infosec-heading" />
+        <LinkList title="Employee Management" items={employeeManagement} headingId="employee-heading" />
+        <LinkList title="IT Requests" items={itRequests} headingId="it-heading" />
+      </div>
+    </section>
   );
 }
 

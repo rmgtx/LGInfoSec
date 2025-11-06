@@ -16,43 +16,120 @@ export default function NewsFeed() {
   const [news] = useState<NewsItem[]>(newsData);
 
   return (
-    <div id="news" className="card">
-      <h2 className="text-2xl font-semibold text-mend-neutral-900 mb-6">Security Awareness Feed</h2>
-      <div className="space-y-4">
+    <section 
+      id="news" 
+      className="card"
+      aria-labelledby="news-heading"
+    >
+      <h2 id="news-heading" style={{ marginBottom: "var(--spacing-lg)" }}>Security Awareness Feed</h2>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-md)" }}>
         {news.map((item) => (
           <article
             key={item.id}
-            className="border border-mend-neutral-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+            style={{
+              border: `1px solid var(--color-border)`,
+              borderRadius: "var(--radius-md)",
+              padding: "var(--spacing-md)",
+              transition: "box-shadow var(--transition-medium)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "var(--shadow-md)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "none";
+            }}
           >
-            <div className="flex items-start space-x-4">
-              <div className="flex-shrink-0 w-16 h-16 bg-mend-primary-100 rounded-lg flex items-center justify-center">
-                <span className="text-mend-primary-600 font-bold text-xl">🔒</span>
+            <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--spacing-md)" }}>
+              <div 
+                style={{
+                  flexShrink: 0,
+                  width: "64px",
+                  height: "64px",
+                  backgroundColor: "rgba(10, 132, 255, 0.1)",
+                  borderRadius: "var(--radius-md)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                aria-hidden="true"
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: "32px", color: "var(--color-primary)" }}>
+                  security
+                </span>
               </div>
-              <div className="flex-1">
-                <div className="flex items-center space-x-2 mb-2">
-                  <span className="text-xs font-semibold text-mend-primary-600 uppercase">
+              <div style={{ flex: 1 }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--spacing-sm)", marginBottom: "var(--spacing-sm)" }}>
+                  <span style={{
+                    fontSize: "12px",
+                    fontWeight: "var(--font-weight-bold)",
+                    color: "var(--color-primary)",
+                    textTransform: "uppercase",
+                  }}>
                     {item.source}
                   </span>
-                  <span className="text-xs text-mend-neutral-500">
-                    {new Date(item.published).toLocaleDateString()}
-                  </span>
+                  <time 
+                    dateTime={item.published}
+                    style={{
+                      fontSize: "12px",
+                      color: "var(--color-text-secondary)",
+                    }}
+                  >
+                    {new Date(item.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  </time>
                 </div>
-                <h3 className="text-lg font-semibold text-mend-neutral-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-mend-neutral-600 mb-3 line-clamp-2">{item.summary}</p>
+                <h3 style={{ marginBottom: "var(--spacing-sm)", fontWeight: "var(--font-weight-bold)", fontSize: "var(--font-size-lg)" }}>{item.title}</h3>
+                <p style={{ 
+                  fontSize: "var(--font-size-sm)", 
+                  color: "var(--color-text-secondary)",
+                  marginBottom: "var(--spacing-md)",
+                  lineHeight: "1.6",
+                  display: "-webkit-box",
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                }}>
+                  {item.summary}
+                </p>
                 <a
                   href={item.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-mend-primary-600 hover:text-mend-primary-700 text-sm font-medium transition-colors"
+                  aria-label={`Read more about ${item.title}`}
+                  style={{
+                    color: "var(--color-primary)",
+                    fontSize: "var(--font-size-sm)",
+                    fontWeight: "var(--font-weight-medium)",
+                    textDecoration: "none",
+                    transition: "color var(--transition-fast)",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "var(--spacing-xs)",
+                  }}
+                  onFocus={(e) => {
+                    e.currentTarget.style.outline = "2px solid var(--color-primary)";
+                    e.currentTarget.style.outlineOffset = "2px";
+                  }}
+                  onBlur={(e) => {
+                    e.currentTarget.style.outline = "none";
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "var(--color-primary-hover)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "var(--color-primary)";
+                  }}
                 >
-                  Read More →
+                  Read More
+                  <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>
+                    arrow_forward
+                  </span>
                 </a>
               </div>
             </div>
           </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

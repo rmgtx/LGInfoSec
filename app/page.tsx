@@ -9,20 +9,28 @@ import NewsFeed from "@/components/NewsFeed";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-mend-neutral-50">
+    <>
       <Header />
       <HeroBanner />
-      <div className="max-w-container mx-auto container-spacing py-8">
-        <MissionCard />
-        <IncidentReportButton />
-        <NavigationColumns />
-        <DocumentLibrary />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
-          <EventCalendar />
-          <NewsFeed />
+      <main id="main-content" style={{ minHeight: "100vh", backgroundColor: "var(--color-bg)" }} role="main">
+        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "var(--spacing-xl)" }}>
+          <MissionCard />
+          <IncidentReportButton />
+          <NavigationColumns />
+          <DocumentLibrary />
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-2"
+            style={{ 
+              gap: "var(--spacing-xl)",
+              marginTop: "var(--spacing-xl)"
+            }}
+          >
+            <EventCalendar />
+            <NewsFeed />
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }
 

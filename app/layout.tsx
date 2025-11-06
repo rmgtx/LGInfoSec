@@ -22,6 +22,11 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.15/main.min.css"
           rel="stylesheet"
         />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+          crossOrigin="anonymous"
+        />
       </head>
       <body className="antialiased">{children}</body>
     </html>

@@ -15,9 +15,7 @@
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/interaction": "^6.1.15",
-    "react-hook-form": "^7.52.0",
-    "zustand": "^4.5.0",
-    "date-fns": "^3.6.0"
+    "react-hook-form": "^7.52.0"
   },
   "devDependencies": {
     "typescript": "^5.5.0",
