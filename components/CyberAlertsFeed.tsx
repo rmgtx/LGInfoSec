@@ -16,14 +16,7 @@ export interface FeedItemData {
   read: boolean;
 }
 
-interface FeedResponse {
-  success: boolean;
-  items?: FeedItemData[];
-  feedTitle?: string;
-  feedDescription?: string;
-  error?: string;
-  message?: string;
-}
+// Removed unused FeedResponse interface - using types from rssParser instead
 
 export default function CyberAlertsFeed() {
   const [feedItems, setFeedItems] = useState<FeedItemData[]>([]);
