@@ -11,7 +11,7 @@ export default function IncidentReportButton() {
       <div className="mb-8 text-center">
         <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-lg shadow-lg transition transform hover:scale-105"
+          className="btn-accent py-4 px-8 text-lg shadow-lg hover:scale-105 focus:outline-none focus:ring-2 focus:ring-mend-accent-500 focus:ring-offset-2"
         >
           🚨 Report Security Incident
         </button>

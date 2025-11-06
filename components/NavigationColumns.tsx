@@ -28,20 +28,20 @@ const itRequests: NavItem[] = [
 
 function LinkList({ title, items }: { title: string; items: NavItem[] }) {
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
-      <h3 className="text-xl font-bold text-gray-900 mb-4">{title}</h3>
-      <ul className="space-y-3">
+    <div className="card">
+      <h3 className="text-xl font-semibold text-mend-neutral-900 mb-4">{title}</h3>
+      <ul className="space-y-2">
         {items.map((item) => (
           <li key={item.slug}>
             <a
               href={`/request/${item.slug}`}
-              className="block p-3 rounded-md hover:bg-blue-50 transition group"
+              className="block p-3 rounded-md hover:bg-mend-primary-50 transition-colors group focus:outline-none focus:ring-2 focus:ring-mend-primary-500 focus:ring-offset-1"
             >
-              <span className="text-blue-600 font-medium group-hover:text-blue-700">
+              <span className="text-mend-primary-600 font-medium group-hover:text-mend-primary-700">
                 {item.title}
               </span>
               {item.description && (
-                <p className="text-sm text-gray-600 mt-1">{item.description}</p>
+                <p className="text-sm text-mend-neutral-600 mt-1">{item.description}</p>
               )}
             </a>
           </li>

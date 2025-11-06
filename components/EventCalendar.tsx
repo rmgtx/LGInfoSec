@@ -26,8 +26,8 @@ export default function EventCalendar() {
   }));
 
   return (
-    <div id="calendar" className="bg-white rounded-lg shadow-md p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">Security Training Calendar</h2>
+    <div id="calendar" className="card">
+      <h2 className="text-2xl font-semibold text-mend-neutral-900 mb-6">Security Training Calendar</h2>
       <div className="calendar-container">
         <FullCalendar
           ref={calendarRef}
@@ -51,18 +51,32 @@ export default function EventCalendar() {
       <style jsx global>{`
         .fc-event {
           cursor: pointer;
+          border-radius: 0.25rem;
         }
         .event-category-training {
           background-color: #3b82f6;
           border-color: #2563eb;
         }
         .event-category-workshop {
-          background-color: #10b981;
-          border-color: #059669;
+          background-color: #0ea5e9;
+          border-color: #0284c7;
         }
         .event-category-webinar {
           background-color: #f59e0b;
           border-color: #d97706;
+        }
+        .fc-button-primary {
+          background-color: #2563eb;
+          border-color: #1e40af;
+        }
+        .fc-button-primary:hover {
+          background-color: #1e40af;
+          border-color: #1e3a8a;
+        }
+        .fc-button-primary:not(:disabled):active,
+        .fc-button-primary:not(:disabled).fc-button-active {
+          background-color: #1e3a8a;
+          border-color: #1e3a8a;
         }
       `}</style>
     </div>
