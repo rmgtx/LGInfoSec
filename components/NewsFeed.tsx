@@ -21,68 +21,74 @@ export default function NewsFeed() {
       className="card"
       aria-labelledby="news-heading"
     >
-      <h2 id="news-heading" style={{ marginBottom: "var(--spacing-lg)" }}>Security Awareness Feed</h2>
-      <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-md)" }}>
+      <div className="card-header">
+        <h2 id="news-heading" className="card-title" style={{ margin: 0 }}>Security Awareness Feed</h2>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: "var(--spacing-lg)" }}>
         {news.map((item) => (
           <article
             key={item.id}
             style={{
               border: `1px solid var(--color-border)`,
-              borderRadius: "var(--radius-md)",
-              padding: "var(--spacing-md)",
-              transition: "box-shadow var(--transition-medium)",
+              borderRadius: "var(--radius-lg)",
+              padding: "var(--spacing-lg)",
+              transition: "box-shadow var(--transition-medium), border-color var(--transition-medium), transform var(--transition-medium)",
+              background: "var(--color-bg-alt)",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = "var(--shadow-md)";
+              e.currentTarget.style.borderColor = "var(--color-primary)";
+              e.currentTarget.style.transform = "translateY(var(--hover-lift))";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.boxShadow = "none";
+              e.currentTarget.style.borderColor = "var(--color-border)";
+              e.currentTarget.style.transform = "translateY(0)";
             }}
           >
             <div style={{ display: "flex", alignItems: "flex-start", gap: "var(--spacing-md)" }}>
               <div 
                 style={{
                   flexShrink: 0,
-                  width: "64px",
-                  height: "64px",
+                  width: "72px",
+                  height: "72px",
                   backgroundColor: "rgba(10, 132, 255, 0.1)",
-                  borderRadius: "var(--radius-md)",
+                  borderRadius: "var(--radius-lg)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  border: "1px solid rgba(10, 132, 255, 0.2)",
                 }}
                 aria-hidden="true"
               >
-                <span className="material-symbols-outlined" style={{ fontSize: "32px", color: "var(--color-primary)" }}>
+                <span className="material-symbols-outlined" style={{ fontSize: "36px", color: "var(--color-primary)" }}>
                   security
                 </span>
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: "var(--spacing-sm)", marginBottom: "var(--spacing-sm)" }}>
-                  <span style={{
-                    fontSize: "12px",
-                    fontWeight: "var(--font-weight-bold)",
-                    color: "var(--color-primary)",
-                    textTransform: "uppercase",
-                  }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "var(--spacing-md)", marginBottom: "var(--spacing-md)", flexWrap: "wrap" }}>
+                  <span className="badge badge-primary" style={{ textTransform: "uppercase" }}>
                     {item.source}
                   </span>
                   <time 
                     dateTime={item.published}
-                    style={{
-                      fontSize: "12px",
-                      color: "var(--color-text-secondary)",
-                    }}
+                    className="text-muted"
                   >
                     {new Date(item.published).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </time>
                 </div>
-                <h3 style={{ marginBottom: "var(--spacing-sm)", fontWeight: "var(--font-weight-bold)", fontSize: "var(--font-size-lg)" }}>{item.title}</h3>
-                <p style={{ 
-                  fontSize: "var(--font-size-sm)", 
-                  color: "var(--color-text-secondary)",
-                  marginBottom: "var(--spacing-md)",
-                  lineHeight: "1.6",
+                <h3 style={{ 
+                  marginBottom: "var(--spacing-md)", 
+                  fontWeight: "var(--font-weight-bold)", 
+                  fontSize: "var(--font-size-lg)",
+                  lineHeight: "var(--line-height-tight)",
+                  color: "var(--color-text)"
+                }}>
+                  {item.title}
+                </h3>
+                <p className="text-muted" style={{ 
+                  marginBottom: "var(--spacing-lg)",
+                  lineHeight: "var(--line-height-relaxed)",
                   display: "-webkit-box",
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: "vertical",
@@ -95,32 +101,10 @@ export default function NewsFeed() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Read more about ${item.title}`}
-                  style={{
-                    color: "var(--color-primary)",
-                    fontSize: "var(--font-size-sm)",
-                    fontWeight: "var(--font-weight-medium)",
-                    textDecoration: "none",
-                    transition: "color var(--transition-fast)",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "var(--spacing-xs)",
-                  }}
-                  onFocus={(e) => {
-                    e.currentTarget.style.outline = "2px solid var(--color-primary)";
-                    e.currentTarget.style.outlineOffset = "2px";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.outline = "none";
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = "var(--color-primary-hover)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = "var(--color-primary)";
-                  }}
+                  className="link-button"
                 >
                   Read More
-                  <span className="material-symbols-outlined" style={{ fontSize: "16px" }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: "18px" }} aria-hidden="true">
                     arrow_forward
                   </span>
                 </a>

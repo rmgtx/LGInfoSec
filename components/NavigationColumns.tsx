@@ -29,65 +29,41 @@ const itRequests: NavItem[] = [
 function LinkList({ title, items, headingId }: { title: string; items: NavItem[]; headingId: string }) {
   return (
     <section className="card" aria-labelledby={headingId}>
-      <h3 id={headingId} style={{ marginBottom: "var(--spacing-md)" }}>{title}</h3>
-      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+      <div className="card-header">
+        <h3 id={headingId} className="card-title" style={{ margin: 0 }}>{title}</h3>
+      </div>
+      <ul className="link-list" style={{ marginTop: "var(--spacing-md)" }}>
         {items.map((item) => (
-          <li key={item.slug} style={{ marginBottom: "var(--spacing-sm)" }}>
+          <li key={item.slug}>
             <a
               href={`/request/${item.slug}`}
               style={{
                 display: "flex",
                 alignItems: "flex-start",
-                padding: "var(--spacing-md)",
-                borderRadius: "var(--radius-sm)",
-                color: "var(--color-text)",
-                fontWeight: "var(--font-weight-medium)",
-                transition: "all var(--transition-fast)",
-                textDecoration: "none",
-                border: "1px solid transparent",
-                outline: "none",
-              }}
-              onFocus={(e) => {
-                e.currentTarget.style.outline = "2px solid var(--color-primary)";
-                e.currentTarget.style.outlineOffset = "2px";
-                e.currentTarget.style.borderColor = "var(--color-primary)";
-                e.currentTarget.style.backgroundColor = "rgba(10, 132, 255, 0.05)";
-              }}
-              onBlur={(e) => {
-                e.currentTarget.style.outline = "none";
-                e.currentTarget.style.borderColor = "transparent";
-                e.currentTarget.style.backgroundColor = "transparent";
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "rgba(10, 132, 255, 0.1)";
-                e.currentTarget.style.borderColor = "var(--color-border)";
-              }}
-              onMouseLeave={(e) => {
-                if (document.activeElement !== e.currentTarget) {
-                  e.currentTarget.style.backgroundColor = "transparent";
-                  e.currentTarget.style.borderColor = "transparent";
-                }
+                gap: "var(--spacing-md)",
               }}
             >
               <span className="material-symbols-outlined" style={{ 
-                fontSize: "20px", 
+                fontSize: "24px", 
                 color: "var(--color-primary)",
-                marginRight: "var(--spacing-sm)",
                 flexShrink: 0,
                 marginTop: "2px"
-              }}>
+              }} aria-hidden="true">
                 chevron_right
               </span>
               <div style={{ flex: 1 }}>
-                <div style={{ color: "var(--color-primary)", fontWeight: "var(--font-weight-medium)" }}>
+                <div style={{ 
+                  color: "var(--color-text)", 
+                  fontWeight: "var(--font-weight-semibold)",
+                  fontSize: "var(--font-size-base)",
+                  lineHeight: "var(--line-height-normal)",
+                  marginBottom: item.description ? "var(--spacing-xs)" : 0
+                }}>
                   {item.title}
                 </div>
                 {item.description && (
-                  <div style={{ 
-                    fontSize: "var(--font-size-sm)", 
-                    color: "var(--color-text-secondary)",
-                    marginTop: "var(--spacing-xs)",
-                    lineHeight: "1.5"
+                  <div className="text-muted" style={{ 
+                    lineHeight: "var(--line-height-normal)"
                   }}>
                     {item.description}
                   </div>
@@ -105,13 +81,12 @@ export default function NavigationColumns() {
   return (
     <section 
       aria-labelledby="requests-heading"
-      style={{ marginBottom: "var(--spacing-xl)" }}
     >
       <h2 id="requests-heading" className="sr-only">Request Forms</h2>
       <div 
         className="grid grid-cols-1 md:grid-cols-3"
         style={{ 
-          gap: "var(--spacing-lg)",
+          gap: "var(--section-gap)",
         }}
       >
         <LinkList title="InfoSec Processes" items={infosecProcesses} headingId="infosec-heading" />

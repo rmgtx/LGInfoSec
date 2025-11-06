@@ -47,10 +47,11 @@ export default function DocumentLibrary() {
     <section 
       id="policies" 
       className="card" 
-      style={{ marginBottom: "var(--spacing-xl)" }}
       aria-labelledby="policies-heading"
     >
-      <h2 id="policies-heading" style={{ marginBottom: "var(--spacing-lg)" }}>Policies & Documentation</h2>
+      <div className="card-header">
+        <h2 id="policies-heading" className="card-title" style={{ margin: 0 }}>Policies & Documentation</h2>
+      </div>
 
       <div 
         role="tablist" 
@@ -70,7 +71,7 @@ export default function DocumentLibrary() {
               border: selectedCategory === category ? "2px solid var(--color-primary)" : "2px solid transparent",
               fontWeight: "var(--font-weight-medium)",
               cursor: "pointer",
-              transition: "all var(--transition-fast)",
+              transition: "background-color var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast)",
               backgroundColor: selectedCategory === category ? "var(--color-primary)" : "#f3f4f6",
               color: selectedCategory === category ? "white" : "var(--color-text-secondary)",
               outline: "none",
@@ -133,41 +134,39 @@ export default function DocumentLibrary() {
                   border: `1px solid var(--color-border)`,
                   borderRadius: "var(--radius-md)",
                   padding: "var(--spacing-md)",
-                  transition: "box-shadow var(--transition-medium)",
+                  transition: "box-shadow var(--transition-medium), transform var(--transition-medium)",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.boxShadow = "var(--shadow-md)";
+                  e.currentTarget.style.transform = "translateY(var(--hover-lift-small))";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = "none";
+                  e.currentTarget.style.transform = "translateY(0)";
                 }}
               >
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: "var(--spacing-md)" }}>
                   <div style={{ flex: 1 }}>
-                    <h3 style={{ marginBottom: "var(--spacing-xs)", fontWeight: "var(--font-weight-bold)", fontSize: "var(--font-size-lg)" }}>
+                    <h3 style={{ 
+                      marginBottom: "var(--spacing-sm)", 
+                      fontWeight: "var(--font-weight-bold)", 
+                      fontSize: "var(--font-size-lg)",
+                      lineHeight: "var(--line-height-tight)",
+                      color: "var(--color-text)"
+                    }}>
                       {doc.title}
                     </h3>
                     <div style={{ 
-                      fontSize: "var(--font-size-sm)", 
-                      color: "var(--color-text-secondary)",
-                      marginBottom: "var(--spacing-sm)",
+                      marginBottom: "var(--spacing-md)",
                       display: "flex",
                       flexWrap: "wrap",
                       gap: "var(--spacing-sm)",
                       alignItems: "center"
                     }}>
-                      <span style={{
-                        display: "inline-block",
-                        padding: "2px 8px",
-                        backgroundColor: "rgba(10, 132, 255, 0.1)",
-                        color: "var(--color-primary)",
-                        borderRadius: "var(--radius-sm)",
-                        fontSize: "12px",
-                        fontWeight: "var(--font-weight-medium)",
-                      }}>
+                      <span className="badge badge-primary">
                         {doc.category}
                       </span>
-                      <span>Last updated: {new Date(doc.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      <span className="text-muted">Last updated: {new Date(doc.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                     </div>
                   </div>
                   <a
@@ -178,16 +177,15 @@ export default function DocumentLibrary() {
                     aria-label={linkText}
                     style={{ 
                       marginLeft: "var(--spacing-md)",
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "var(--spacing-xs)",
-                      whiteSpace: "nowrap"
+                      whiteSpace: "nowrap",
+                      flexShrink: 0,
+                      minWidth: "auto"
                     }}
                   >
-                    <span className="material-symbols-outlined" style={{ fontSize: "18px" }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: "18px", flexShrink: 0 }} aria-hidden="true">
                       open_in_new
                     </span>
-                    View {fileType}
+                    <span style={{ flexShrink: 0 }}>View {fileType}</span>
                   </a>
                 </div>
               </article>

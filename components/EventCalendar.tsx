@@ -31,7 +31,9 @@ export default function EventCalendar() {
       className="card"
       aria-labelledby="calendar-heading"
     >
-      <h2 id="calendar-heading" style={{ marginBottom: "var(--spacing-lg)" }}>Security Training Calendar</h2>
+      <div className="card-header">
+        <h2 id="calendar-heading" className="card-title" style={{ margin: 0 }}>Security Training Calendar</h2>
+      </div>
       <div 
         className="calendar-container"
         role="application"
@@ -132,22 +134,25 @@ export default function EventCalendar() {
           font-weight: var(--font-weight-medium);
           padding: var(--spacing-sm) var(--spacing-md);
           font-size: var(--font-size-sm);
-          transition: all var(--transition-fast);
+          transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
         }
         .fc-button:hover {
           background-color: var(--color-bg);
           border-color: var(--color-primary);
           color: var(--color-primary);
+          transform: translateY(var(--hover-lift-small));
         }
         .fc-button-primary {
           background-color: var(--color-primary);
           border-color: var(--color-primary);
           color: white;
+          transition: background-color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
         }
         .fc-button-primary:hover {
           background-color: var(--color-primary-hover);
           border-color: var(--color-primary-hover);
           color: white;
+          transform: translateY(var(--hover-lift-small));
         }
         .fc-button:focus {
           outline: 2px solid var(--color-primary);
@@ -179,8 +184,10 @@ export default function EventCalendar() {
         }
         @media (prefers-reduced-motion: reduce) {
           .fc-event,
-          .fc-button {
-            transition: none;
+          .fc-button,
+          .fc-button-primary {
+            transition: none !important;
+            transform: none !important;
           }
         }
       `}</style>

@@ -15,24 +15,21 @@ export default function HeroBanner() {
     >
       <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "0 var(--spacing-xl)", textAlign: "center" }}>
         <h1 
-          className="mb-4"
           style={{ 
-            fontSize: "var(--font-size-xl)",
+            fontSize: "var(--font-size-3xl)",
             fontWeight: "var(--font-weight-bold)",
-            lineHeight: "1.25",
-            margin: "0 0 var(--spacing-md) 0",
+            lineHeight: "var(--line-height-tight)",
+            margin: "0 0 var(--spacing-lg) 0",
             color: "var(--color-text)"
           }}
         >
           Information Security
         </h1>
         <p 
-          className="max-w-3xl mx-auto"
+          className="max-w-3xl mx-auto text-lg"
           style={{ 
-            fontSize: "var(--font-size-lg)",
-            fontWeight: "var(--font-weight-regular)",
-            lineHeight: "1.6",
-            color: "var(--color-text-secondary)"
+            color: "var(--color-text-secondary)",
+            lineHeight: "var(--line-height-relaxed)"
           }}
         >
           Preserving Confidentiality, Integrity, and Availability of Mend systems and data.

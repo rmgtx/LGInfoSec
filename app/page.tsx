@@ -13,21 +13,22 @@ export default function Home() {
       <Header />
       <HeroBanner />
       <main id="main-content" style={{ minHeight: "100vh", backgroundColor: "var(--color-bg)" }} role="main">
-        <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "var(--spacing-xl)" }}>
+        <div style={{ 
+          maxWidth: "1400px", 
+          margin: "0 auto", 
+          padding: "var(--spacing-xl)",
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--section-gap)",
+          width: "100%",
+          boxSizing: "border-box"
+        }}>
           <MissionCard />
           <IncidentReportButton />
           <NavigationColumns />
           <DocumentLibrary />
-          <div 
-            className="grid grid-cols-1 lg:grid-cols-2"
-            style={{ 
-              gap: "var(--spacing-xl)",
-              marginTop: "var(--spacing-xl)"
-            }}
-          >
-            <EventCalendar />
-            <NewsFeed />
-          </div>
+          <EventCalendar />
+          <NewsFeed />
         </div>
       </main>
     </>

@@ -55,44 +55,122 @@ export default function IncidentReportModal({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-          <h2 className="text-2xl font-bold text-gray-900">Report Security Incident</h2>
+    <div 
+      className="fixed inset-0 flex items-center justify-center z-50 p-4"
+      style={{
+        backgroundColor: "rgba(0, 0, 0, 0.5)",
+        backdropFilter: "blur(4px)"
+      }}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div 
+        className="rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        style={{
+          backgroundColor: "var(--color-bg-alt)",
+          borderRadius: "var(--radius-lg)",
+          boxShadow: "var(--shadow-lg)"
+        }}
+      >
+        <div 
+          className="sticky top-0 flex justify-between items-center"
+          style={{
+            backgroundColor: "var(--color-bg-alt)",
+            borderBottom: "1px solid var(--color-border)",
+            padding: "var(--spacing-xl)",
+          }}
+        >
+          <h2 
+            className="card-title"
+            style={{ margin: 0 }}
+          >
+            Report Security Incident
+          </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 text-2xl"
+            className="button btn-secondary"
+            aria-label="Close modal"
+            style={{
+              minWidth: "44px",
+              minHeight: "44px",
+              padding: "var(--spacing-sm)",
+              fontSize: "var(--font-size-xl)",
+              lineHeight: 1
+            }}
           >
             ×
           </button>
         </div>
 
         {showSuccess ? (
-          <div className="p-6 text-center">
-            <div className="text-green-600 text-5xl mb-4">✓</div>
-            <p className="text-xl font-semibold text-gray-900 mb-2">
+          <div style={{ padding: "var(--spacing-xl)", textAlign: "center" }}>
+            <div 
+              style={{ 
+                fontSize: "64px",
+                color: "var(--color-success)",
+                marginBottom: "var(--spacing-lg)"
+              }}
+              aria-hidden="true"
+            >
+              ✓
+            </div>
+            <p 
+              style={{ 
+                fontSize: "var(--font-size-xl)",
+                fontWeight: "var(--font-weight-bold)",
+                color: "var(--color-text)",
+                marginBottom: "var(--spacing-md)"
+              }}
+            >
               Report submitted to InfoSec.
             </p>
-            <p className="text-gray-600">Thank you for your report.</p>
+            <p className="text-muted">Thank you for your report.</p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
+          <form 
+            onSubmit={handleSubmit(onSubmit)} 
+            style={{ 
+              padding: "var(--spacing-xl)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--spacing-lg)"
+            }}
+          >
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Name *
               </label>
               <input
                 {...register("name", { required: "Name is required" })}
                 type="text"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
               />
               {errors.name && (
-                <p className="text-red-600 text-sm mt-1">{errors.name.message}</p>
+                <p style={{ color: "var(--color-error)", fontSize: "var(--font-size-sm)", marginTop: "var(--spacing-xs)" }}>
+                  {errors.name.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Email *
               </label>
               <input
@@ -104,20 +182,30 @@ export default function IncidentReportModal({
                   },
                 })}
                 type="email"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
               />
               {errors.email && (
-                <p className="text-red-600 text-sm mt-1">{errors.email.message}</p>
+                <p style={{ color: "var(--color-error)", fontSize: "var(--font-size-sm)", marginTop: "var(--spacing-xs)" }}>
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Department *
               </label>
               <select
                 {...register("department", { required: "Department is required" })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="select"
               >
                 <option value="">Select Department</option>
                 <option value="Engineering">Engineering</option>
@@ -129,17 +217,27 @@ export default function IncidentReportModal({
                 <option value="Other">Other</option>
               </select>
               {errors.department && (
-                <p className="text-red-600 text-sm mt-1">{errors.department.message}</p>
+                <p style={{ color: "var(--color-error)", fontSize: "var(--font-size-sm)", marginTop: "var(--spacing-xs)" }}>
+                  {errors.department.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Incident Type *
               </label>
               <select
                 {...register("incidentType", { required: "Incident type is required" })}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="select"
               >
                 <option value="">Select Incident Type</option>
                 <option value="Phishing">Phishing Attempt</option>
@@ -150,47 +248,78 @@ export default function IncidentReportModal({
                 <option value="Other">Other</option>
               </select>
               {errors.incidentType && (
-                <p className="text-red-600 text-sm mt-1">{errors.incidentType.message}</p>
+                <p style={{ color: "var(--color-error)", fontSize: "var(--font-size-sm)", marginTop: "var(--spacing-xs)" }}>
+                  {errors.incidentType.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Description *
               </label>
               <textarea
                 {...register("description", { required: "Description is required" })}
                 rows={5}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="textarea"
               />
               {errors.description && (
-                <p className="text-red-600 text-sm mt-1">{errors.description.message}</p>
+                <p style={{ color: "var(--color-error)", fontSize: "var(--font-size-sm)", marginTop: "var(--spacing-xs)" }}>
+                  {errors.description.message}
+                </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label 
+                style={{
+                  display: "block",
+                  fontSize: "var(--font-size-sm)",
+                  fontWeight: "var(--font-weight-semibold)",
+                  color: "var(--color-text)",
+                  marginBottom: "var(--spacing-sm)"
+                }}
+              >
                 Attachment (Optional)
               </label>
               <input
                 {...register("attachment")}
                 type="file"
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="input"
               />
             </div>
 
-            <div className="flex justify-end space-x-4 pt-4">
+            <div 
+              style={{ 
+                display: "flex", 
+                justifyContent: "flex-end", 
+                gap: "var(--spacing-md)",
+                paddingTop: "var(--spacing-md)"
+              }}
+            >
               <button
                 type="button"
                 onClick={onClose}
-                className="px-6 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50"
+                className="button btn-secondary"
               >
                 Cancel
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-6 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 disabled:opacity-50"
+                className="button button-accent"
+                style={{
+                  opacity: isSubmitting ? 0.6 : 1,
+                  cursor: isSubmitting ? "not-allowed" : "pointer"
+                }}
               >
                 {isSubmitting ? "Submitting..." : "Submit Report"}
               </button>
