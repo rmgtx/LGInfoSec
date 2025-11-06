@@ -31,27 +31,39 @@ export default function IncidentReportModal({
   const onSubmit = async (data: IncidentFormData) => {
     setIsSubmitting(true);
     try {
-      const response = await fetch("/api/report", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...data,
-          timestamp: new Date().toISOString(),
-        }),
-      });
+      // For GitHub Pages static deployment, we use mailto: link
+      // In production, you would integrate with a form service like Formspree,
+      // Google Forms, or a backend API
+      const subject = encodeURIComponent(
+        `Security Incident Report: ${data.incidentType}`
+      );
+      const body = encodeURIComponent(
+        `Security Incident Report\n\n` +
+          `Name: ${data.name}\n` +
+          `Email: ${data.email}\n` +
+          `Department: ${data.department}\n` +
+          `Incident Type: ${data.incidentType}\n` +
+          `Description:\n${data.description}\n\n` +
+          `Submitted: ${new Date().toISOString()}`
+      );
 
-      if (response.ok) {
-        setShowSuccess(true);
-        reset();
-        setTimeout(() => {
-          setShowSuccess(false);
-          onClose();
-        }, 2000);
-      }
+      // Open email client with pre-filled form
+      // Replace with your InfoSec email address
+      const emailAddress = "infosec@example.com"; // TODO: Update with actual email
+      window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+
+      // Show success message
+      setShowSuccess(true);
+      reset();
+      setTimeout(() => {
+        setShowSuccess(false);
+        onClose();
+      }, 3000);
     } catch (error) {
       console.error("Error submitting report:", error);
+      alert(
+        "Error submitting report. Please try again or contact InfoSec directly."
+      );
     } finally {
       setIsSubmitting(false);
     }

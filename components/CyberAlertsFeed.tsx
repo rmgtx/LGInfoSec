@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import FeedItem from "./FeedItem";
 import FeedControls from "./FeedControls";
+import { fetchRSSFeed } from "../lib/rssParser";
 
 export interface FeedItemData {
   id: string;
@@ -62,8 +63,9 @@ export default function CyberAlertsFeed() {
     setError(null);
 
     try {
-      const response = await fetch("/api/cyberalerts");
-      const data: FeedResponse = await response.json();
+      // Fetch RSS feed directly from client (using CORS proxy)
+      const feedUrl = "https://www.armourcyber.io/rss/latest-public";
+      const data = await fetchRSSFeed(feedUrl);
 
       if (!data.success || !data.items) {
         throw new Error(data.message || data.error || "Failed to fetch feed");
