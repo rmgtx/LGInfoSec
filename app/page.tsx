@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import HeroBanner from "@/components/HeroBanner";
 import MissionCard from "@/components/MissionCard";
-import IncidentReportButton from "@/components/IncidentReportButton";
 import NavigationColumns from "@/components/NavigationColumns";
 import DocumentLibrary from "@/components/DocumentLibrary";
 import EventCalendar from "@/components/EventCalendar";
@@ -30,7 +29,6 @@ export default function Home() {
           }}
         >
           <MissionCard />
-          <IncidentReportButton />
           <NavigationColumns />
           <DocumentLibrary />
           <EventCalendar />
